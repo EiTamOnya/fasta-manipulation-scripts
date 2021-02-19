@@ -3,6 +3,12 @@
 ### Requirements
 Python 3.8 is required to run the scripts
 
+Please run the below:
+
+```
+python -m pip install -r requirements.txt
+```
+
 ### Instructions
 Run the below in order to get more information about a script
 

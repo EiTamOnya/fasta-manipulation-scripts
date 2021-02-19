@@ -4,7 +4,7 @@ import glob
 import os
 import sys
 import re
-
+from tqdm import tqdm
 
 # set as global var so the num_contig() can use it
 count = 0
@@ -27,16 +27,13 @@ def main():
         create_output(output)
         files = glob.glob('*.fasta')
         print(f'Processing {len(files)} files: ', end='')
-        for i, file in enumerate(files):
+        for i, file in enumerate(tqdm(files, desc="Processing...", colour='#cc4722')):
             # make sure the counter is 0 before each file
             count = 0
             # get the number of occurances in file and put it in a dict
             occurance = str(
                 replace_file_contents(file, replacement, output))
             occurances[file] = occurance
-            # progress bar
-            print(' * ', end='')
-            sys.stdout.flush()
     else:
         create_output(output)
         occurance = str(replace_file_contents(nfile, replacement, output))
